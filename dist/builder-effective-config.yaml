@@ -1,0 +1,35 @@
+directories:
+  output: dist/
+  buildResources: resources/installer/
+  app: .
+productName: EZCODE
+appId: com.EZCODE.hello
+asar: true
+protocols:
+  name: EZCODE
+  schemes:
+    - EZCODE
+mac:
+  target:
+    - default
+  icon: ./assets/icons/mac/ez.icns
+dmg:
+  title: EZCODE
+  icon: ./assets/icons/mac/ez.icns
+win:
+  target:
+    - zip
+    - nsis
+  icon: ./assets/icons/win/256x256.ico
+linux:
+  target:
+    - AppImage
+    - deb
+    - rpm
+    - zip
+    - tar.gz
+  icon: ./assets/icons/png/64x64.png
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+electronVersion: 7.1.7

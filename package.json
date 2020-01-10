@@ -1,0 +1,77 @@
+{ 
+    "build": {
+    "productName": "EZCODE",
+    "appId": "com.EZCODE.hello",
+    "asar": true,
+    "protocols" : {
+        "name" : "EZCODE",
+        "schemes" : ["EZCODE"]
+    },
+    "mac": {
+      "target": [
+        "default"
+      ],
+      "icon": "./assets/icons/mac/ez.icns"
+    },
+    "dmg": {
+      "title": "EZCODE",
+      "icon": "./assets/icons/mac/ez.icns"
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ],
+      "icon": "./assets/icons/win/256x256.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage", 
+        "deb",
+        "rpm",
+        "zip",
+        "tar.gz"
+      ],
+      "icon": "./assets/icons/png/64x64.png"
+    },
+    "nsis":{
+      "oneClick" : false,
+      "allowToChangeInstallationDirectory" :true
+    },
+    "directories": {
+      "buildResources": "resources/installer/",
+      "output": "dist/",
+      "app": "."
+    }
+  },
+    "name": "EZCode",
+    "version": "1.0.0",
+    "main": "main.js",
+    "dependencies": {
+        "async": "^3.1.0",
+        "bootstrap": "^4.4.1",
+        "enlighterjs": "^2.10.1",
+        "jquery": "^3.4.1",
+        "lunr": "^1.0.0",
+        "mysql": "^2.17.1",
+        "osenv": "^0.1.5",
+        "popper.js": "^1.16.0",
+        "type": "module"
+    },
+    "devDependencies": {
+        "electron": "^7.1.7",
+        "electron-builder": "^21.2.0"
+    },
+    "scripts": {
+        "pack": "electron-builder",
+        "dist": "build",
+        "build:osx": "build --mac",
+        "build:linux": "npm run build:linux32 && npm run build:linux64",
+        "build:linux32": "build --linux --ia32",
+        "build:linux64": "build --linux --x64",
+        "build:win": "npm run build:win32 && npm run build:win64", 
+        "build:win32": "build --win --ia32",
+        "build:win64": "build --win --x64",
+        "build": "npm run build:linux && npm run build:osx && npm run build:win"
+    }
+}
